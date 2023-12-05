@@ -105,17 +105,13 @@ const newProduct = manager.addProduct({
 
 console.log("Producto agregado:", newProduct);
 
-// Se verifica producto agregado
 console.log("Lista de productos actualizada:", manager.getProducts());
 
-// Se busca por ID
 console.log("Obtener producto por ID:", manager.getProductById(newProduct.id));
 
-// Actualizacion
 const updatedProduct = manager.updateProduct(newProduct.id, { price: 250, stock: 30 });
 console.log("Producto actualizado:", updatedProduct);
 
-// Eliminar producto
 const deletionResult = manager.deleteProduct(newProduct.id);
 if (deletionResult) {
     console.log("Producto eliminado exitosamente");

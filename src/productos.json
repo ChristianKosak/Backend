@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "title": "Producto 1",
+        "description": "Descripción del Producto 1",
+        "price": 100,
+        "thumbnail": "imagen1.jpg",
+        "code": "ABC123",
+        "stock": 20
+    },
+    {
+        "id": 2,
+        "title": "Producto 2",
+        "description": "Descripción del Producto 2",
+        "price": 150,
+        "thumbnail": "imagen2.jpg",
+        "code": "XYZ789",
+        "stock": 15
+    },
+    {
+        "id": 3,
+        "title": "Producto 3",
+        "description": "Descripción del Producto 3",
+        "price": 120,
+        "thumbnail": "imagen3.jpg",
+        "code": "DEF456",
+        "stock": 18
+    },
+    {
+        "id": 4,
+        "title": "Producto 4",
+        "description": "Descripción del Producto 4",
+        "price": 80,
+        "thumbnail": "imagen4.jpg",
+        "code": "GHI789",
+        "stock": 25
+    },
+    {
+        "id": 5,
+        "title": "Producto 5",
+        "description": "Descripción del Producto 5",
+        "price": 200,
+        "thumbnail": "imagen5.jpg",
+        "code": "JKL012",
+        "stock": 12
+    },
+    {
+        "id": 6,
+        "title": "Producto 6",
+        "description": "Descripción del Producto 6",
+        "price": 90,
+        "thumbnail": "imagen6.jpg",
+        "code": "MNO345",
+        "stock": 30
+    },
+    {
+        "id": 7,
+        "title": "Producto 7",
+        "description": "Descripción del Producto 7",
+        "price": 175,
+        "thumbnail": "imagen7.jpg",
+        "code": "PQR678",
+        "stock": 22
+    },
+    {
+        "id": 8,
+        "title": "Producto 8",
+        "description": "Descripción del Producto 8",
+        "price": 130,
+        "thumbnail": "imagen8.jpg",
+        "code": "STU901",
+        "stock": 17
+    },
+    {
+        "id": 9,
+        "title": "Producto 9",
+        "description": "Descripción del Producto 9",
+        "price": 110,
+        "thumbnail": "imagen9.jpg",
+        "code": "VWX234",
+        "stock": 28
+    },
+    {
+        "id": 10,
+        "title": "Producto 10",
+        "description": "Descripción del Producto 10",
+        "price": 160,
+        "thumbnail": "imagen10.jpg",
+        "code": "YZA567",
+        "stock": 14
+    }
+]
