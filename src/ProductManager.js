@@ -85,8 +85,6 @@ module.exports = ProductManager;
   
 
 
-const ProductManager = require('./ProductManager');
-
 
 const manager = new ProductManager('productos.json');
 
