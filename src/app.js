@@ -4,19 +4,19 @@ const ProductManager = require('./ProductManager');
 const app = express();
 const port = 8080;
 
-const manager = new ProductManager('./productos.json'); // Asegúrate de tener un archivo 'productos.json' con productos existentes
+const manager = new ProductManager('./productos.json'); 
 
 // Endpoint para obtener productos
 app.get('/products', async (req, res) => {
   try {
-    const limit = req.query.limit; // Obtener el límite de productos desde la query param
+    const limit = req.query.limit; 
 
     await manager.loadProducts(); // Cargar productos desde el archivo
 
     let products = manager.getProducts();
 
     if (limit) {
-      products = products.slice(0, parseInt(limit)); // Limitar la cantidad de productos si se especifica el límite
+      products = products.slice(0, parseInt(limit)); 
     }
 
     res.json({ products });
@@ -25,7 +25,7 @@ app.get('/products', async (req, res) => {
   }
 });
 
-// Endpoint para obtener un producto por su ID
+
 app.get('/products/:pid', async (req, res) => {
   try {
     const productId = parseInt(req.params.pid);
@@ -44,7 +44,7 @@ app.get('/products/:pid', async (req, res) => {
   }
 });
 
-// Iniciar el servidor
+
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });

@@ -12,7 +12,7 @@ class ProductManager {
             const data = fs.readFileSync(this.path, 'utf8');
             this.products = JSON.parse(data);
         } catch (err) {
-            // Si ocurre un error al cargar el archivo, se maneja aquí
+            
             console.error('Error al cargar el archivo de productos:', err.message);
         }
     }
@@ -21,7 +21,7 @@ class ProductManager {
         try {
             fs.writeFileSync(this.path, JSON.stringify(this.products, null, 2));
         } catch (err) {
-            // Si ocurre un error al guardar el archivo, se maneja aquí
+            
             console.error('Error al guardar el archivo de productos:', err.message);
         }
     }
@@ -57,7 +57,7 @@ class ProductManager {
             this.saveProducts();
             return this.products[productIndex];
         }
-        return null; // Si no se encuentra el producto, se puede devolver null o manejar el error como sea necesario
+        return null; 
     }
 
     deleteProduct(id) {
@@ -65,7 +65,7 @@ class ProductManager {
         this.products = this.products.filter(product => product.id !== id);
         if (this.products.length !== initialLength) {
             this.saveProducts();
-            return true; // Se ha eliminado el producto
+            return true; 
         }
         return false; // Producto no encontrado o no eliminado
     }
@@ -93,7 +93,7 @@ const manager = new ProductManager('productos.json');
 
 console.log("Productos iniciales:", manager.getProducts());
 
-// Agrega producto
+
 const newProduct = manager.addProduct({
     title: 'producto prueba',
     description: 'Este es un producto prueba',
