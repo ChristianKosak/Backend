@@ -2,6 +2,16 @@ const express = require('express');
 const ProductManager = require('./ProductManager');
 const CartManager = require('./CartManager.json');
 
+const http = require('http');
+const socketIo = require('socket.io');
+const server = http.createServer(app);
+const io = socketIo(server);
+
+const exphbs = require('express-handlebars');
+
+app.engine('.hbs', exphbs({ extname: '.hbs' }));
+app.set('view engine', '.hbs');
+
 const app = express();
 const port = 8080;
 
@@ -9,6 +19,16 @@ const productManager = new ProductManager('./productos.json');
 const cartManager = new CartManager('./carrito.json');
 
 app.use(express.json());
+
+app.get('/home.handlebars.js', (req, res) => {
+    // Renderiza la vista home.handlebars
+    res.render('home');
+  });
+  
+  app.get('/realTimeProducts.handlebars.js', (req, res) => {
+    // Renderiza la vista realtimeProducts.handlebars
+    res.render('realtimeProducts');
+  });
 
 // Gestiom de productos
 app.get('/api/products', async (req, res) => {
@@ -136,3 +156,13 @@ app.post('/api/carts/:cid/product/:pid', async (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
 });
+
+
+io.on('connection', (socket) => {
+    console.log('Cliente conectado');
+  
+    // Nuevo producto
+    socket.on('nuevoProducto', (nuevoProducto) => {
+      io.emit('nuevoProducto', nuevoProducto);
+    });
+  });
