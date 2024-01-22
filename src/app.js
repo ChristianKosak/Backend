@@ -2,6 +2,16 @@ const express = require('express');
 const ProductManager = require('./ProductManager');
 const CartManager = require('./CartManager.json');
 
+require('dotenv').config();
+
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB Connected'))
+    .catch(err => console.log(err));
+
+
+
 const http = require('http');
 const socketIo = require('socket.io');
 const server = http.createServer(app);
@@ -166,3 +176,5 @@ io.on('connection', (socket) => {
       io.emit('nuevoProducto', nuevoProducto);
     });
   });
+
+  
