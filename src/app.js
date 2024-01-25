@@ -2,6 +2,12 @@ const express = require('express');
 const ProductManager = require('./ProductManager');
 const CartManager = require('./CartManager.json');
 
+const authRoutes = require('./routes/authRoutes');
+
+
+app.use(authRoutes);
+
+
 require('dotenv').config();
 
 const mongoose = require('mongoose');
@@ -9,6 +15,18 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
+
+    const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
+app.use(session({
+
+    secret: 'U8bV!f4@Xs6%h+1*wP3^qM2#z',   // Clave secreta
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: 'mongodb+srv://christiankosak:agustina1234sword>@databasecoder.kfti8d9.mongodb.net/?retryWrites=true&w=majority' }),
+    cookie: { maxAge: 180 * 60 * 1000 } // Tiempo de vida de la cookie
+}));
 
 
 
