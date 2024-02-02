@@ -23,6 +23,33 @@ app.get('/register', (req, res) => {
 app.post('/register', async (req, res) => {
     const { username, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
+    if (user== 'admin' && password== '12345') {
+        
+        let salt = bcrypt.genSaltSync(10);
+        let hash = bcrypt.hashSync(password, salt);
+
+        res.json({
+            
+        
+            
+            message: 'Autentificacion Exitosa', 
+        passwordHash: hash,
+        })
+
+    } else {
+
+        res.json({
+            
+        
+            
+            message: 'Autentificacion Invalida', 
+        passwordHash: hash,
+        })
+
+        
+    }
+
+    
     
     // Aca se guarda el codigo
     
@@ -47,3 +74,17 @@ app.post('/login', async (req, res) => {
         res.redirect('/login');
     }
 });
+
+
+
+app.get('/auth/github',
+  passport.authenticate('github', { scope: ['user:email'] }));
+
+
+app.get('/auth/github/callback',
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    
+    res.redirect('/');
+  });
+

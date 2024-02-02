@@ -3,9 +3,52 @@ const ProductManager = require('./ProductManager');
 const CartManager = require('./CartManager.json');
 
 const authRoutes = require('./routes/authRoutes');
-
+const bcrypt = require('bcrypt');
 
 app.use(authRoutes);
+
+app.post('/register', async (req, res) => {
+    const { username, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    if (user== 'admin' && password== '12345') {
+        
+        let salt = bcrypt.genSaltSync(10);
+        let hash = bcrypt.hashSync(password, salt);
+
+        res.json({
+            
+        
+            
+            message: 'Autentificacion Exitosa', 
+        passwordHash: hash,
+        })
+
+    } else {
+
+        res.json({
+            
+        
+            
+            message: 'Autentificacion Invalida', 
+        passwordHash: hash,
+        })
+
+        
+    }
+
+    const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(
+    async function(username, password, done) {
+       
+    }
+));
+
+// Inicializa Passport y sessions
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 
 require('dotenv').config();
@@ -195,4 +238,29 @@ io.on('connection', (socket) => {
     });
   });
 
-  
+  const passport = require('passport');
+const GitHubStrategy = require('passport-github2').Strategy;
+
+passport.use(new GitHubStrategy({
+    clientID: '9c63650c99d65f219eb0',
+    clientSecret: 'f8569bbee14cd39ff52b72333d28885e0a1bbeb3T',
+    callbackURL: "http://localhost:8080/auth/github/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    
+  }
+));
+
+const authRoutes = require('./routes/authRoutes.js');
+
+// Otros middleware y configuraciones de tu aplicación...
+
+app.use(authRoutes);
+
+// Inicializar Passport y sessions
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Otro middleware y configuraciones de tu aplicación...
+
+
